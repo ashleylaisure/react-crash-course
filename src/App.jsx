@@ -1,6 +1,4 @@
 import { useState } from "react"
-
-import MainHeader from "./components/MainHeader/MainHeader"
 import PostList from "./components/PostList/PostList"
 
 function App() {
@@ -22,7 +20,7 @@ function App() {
 
   return (
     <>
-      <MainHeader onCreatePost={modalHandler}/>
+      {/* <MainHeader onCreatePost={modalHandler}/> */}
       <main>
         <PostList modalVisable={modalIsVisible} modalHandler={modalHandler}/>
       </main>

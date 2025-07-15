@@ -26,6 +26,7 @@
 .actions {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 0.5rem;
 }
 
@@ -41,6 +42,16 @@
 
 .actions button:hover {
     background-color: #23014a;
+}
+
+.actions a {
+    background-color: transparent;
+    text-decoration: none;
+    color: #e5d5f7;
+}
+
+.actions a:hover {
+    color: #d1bee6;
 }
 
 .actions button[type='button'] {

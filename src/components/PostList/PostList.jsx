@@ -1,32 +1,48 @@
-import React, { useState } from 'react'
+
 import Post from '../Post/Post'
-import NewPost from '../NewPost/NewPost'
-import Modal from '../Modal/Modal'
+import { useLoaderData } from 'react-router-dom'
 
 import styles from './PostList.module.css'
 
-function PostList({modalVisable, modalHandler}) {
-    const [posts, setPosts] = useState([]);
+function PostList() {
+    const posts = useLoaderData();
 
-    function addPostHandler(postData) {
-        setPosts((existingPosts) => [postData, ...existingPosts]);
-    }
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //         try{
+    //             const fetchedPosts = await postService.index()
+    //             if (fetchedPosts.err) {
+    //                 throw new Error(fetchPosts.err)
+    //             }
+    //             setPosts(fetchedPosts)
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     }
+    //     fetchPosts()
+    // }, []);
 
+    // const addPostHandler = async (formData) => {
+    //     try {
+    //         const newPost = await postService.create(formData)
+    //         if (newPost.err) {
+    //             throw new Error(newPost.err)
+    //         }
+
+    //         // console.log(newPost)
+    //         // setPosts([newPost, ...posts])
+    //         setPosts((existingPosts) => [newPost, ...existingPosts])
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     return (
         <div>
-            {modalVisable && (
-                <Modal onClose={modalHandler}>
-                    <NewPost 
-                        onCancel={modalHandler}
-                        onAddPost ={addPostHandler}
-                    />
-                </Modal>
-            )}
-            
+
             {posts.length > 0 ? (
                 <ul className={styles.posts}>
                     {posts.map((post) => 
-                        <Post key={post.body} author={post.author} body={post.body}/>
+                        <Post key={post._id} id={post._id} author={post.name} body={post.text}/>
                     )}
                 </ul>
             ) : (
